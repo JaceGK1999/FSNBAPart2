@@ -9,6 +9,7 @@ export default function Main() {
   const [load, setLoad] = useState(true);
   const { url } = useRouteMatch();
 
+
   useEffect(() => {
     const fetchApi = async () => {
       const results = await fetchCharacters(filter);
