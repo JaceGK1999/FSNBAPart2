@@ -1,29 +1,32 @@
 import React, { useEffect, useState } from 'react';
-import { Route } from 'react-router-dom';
 import { useRouteMatch } from 'react-router-dom/';
+import Filter from '../../components/Filter';
 import { fetchCharacters } from '../../services/FetchCharacters';
 
 export default function Main() {
-  const [character, setCharacter] = useState([]);
+  const [char, setChar] = useState([]);
+  const [filter, setFilter] = useState('Alive');
   const [load, setLoad] = useState(true);
-  const { url, path } = useRouteMatch();
+  const { url } = useRouteMatch();
 
   useEffect(() => {
     const fetchApi = async () => {
-      const results = await fetchCharacters(stat);
-      setCharacter(results);
+      const results = await fetchCharacters(filter);
+      setChar(results);
       setLoad(false);
     };
     fetchApi();
-  }, [stat]);
+  }, [filter]);
 
   if (load) return <h1>Loading Pickle Ricks</h1>;
 
   return (
     <>
-      <div></div>
+      <div>
+        <Filter setFilter={setFilter} />
+      </div>
       <>
-        {character.map((item) => (
+        {char.map((item) => (
           <div key={item.id}>
             <div>
               <a href={`${url}/${item.id}`}>
@@ -32,17 +35,7 @@ export default function Main() {
             </div>
           </div>
         ))}
-        <Route path={`${path}/:id`}>
-          <Placeholder />
-        </Route>
       </>
     </>
   );
-}
-import React from 'react'
-
-export default function Main() {
-  return (
-    <div>Main</div>
-  )
 }
