@@ -32,7 +32,7 @@ export default function Main() {
         {char.map((item) => (
           <div key={item.id}>
             <div>
-              <a href={`${url}/:id`}>
+              <a href={`${url}/${item.id}`}>
                 Name: {item.name} ({item.status})
               </a>
             </div>
