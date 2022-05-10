@@ -1,6 +1,6 @@
-export async function fetchCharacters(setLife) {
+export async function fetchCharacters(setStats) {
   const status = new URLSearchParams();
-  status.set('status', setLife);
+  status.set('status', setStats);
 
   const response = await fetch(
     `https://rickandmortyapi.com/api/character/?${status.toString()}`
