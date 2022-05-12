@@ -24,7 +24,7 @@ describe('Home page renders without.', () => {
   });
   it('should navigate to Morty Smith', async () => {
     render(
-      <MemoryRouter initialEntries={['/2']}>
+      <MemoryRouter initialEntries={['/6']}>
         <App />
       </MemoryRouter>
     );
@@ -39,5 +39,8 @@ describe('Home page renders without.', () => {
     const Character = await screen.findByText(
       'Name: Abadango Cluster Princess (Alive)'
     );
+    expect(Character).toBeInTheDocument();
+
+    
   });
 });
