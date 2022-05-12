@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { Route } from 'react-router-dom';
-import { BrowserRouter } from 'react-router-dom';
 import Filter from '../../components/Filter';
 import InfoCard from '../../components/InfoCard';
 import { fetchCharacters } from '../../services/FetchCharacters';
