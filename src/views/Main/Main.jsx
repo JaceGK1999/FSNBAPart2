@@ -19,7 +19,10 @@ export default function Main() {
     fetchApi();
   }, [filter]);
 
-  if (load) return <h1>Loading... Hopefully you dont have to look at this for to long...</h1>;
+  if (load)
+    return (
+      <h1>Loading... Hopefully you dont have to look at this for to long...</h1>
+    );
 
   return (
     <>
@@ -37,11 +40,9 @@ export default function Main() {
           </div>
         ))}
       </>
-      <BrowserRouter>
-        <Route path={`/:id`}>
-          <InfoCard />
-        </Route>
-      </BrowserRouter>
+      <Route path={`/:id`}>
+        <InfoCard />
+      </Route>
     </>
   );
 }

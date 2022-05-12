@@ -1,6 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import App from '../../App';
+import userEvent from '@testing-library/user-event';
 
 describe('Home page renders without.', () => {
   it('should load a list of people from R and M', async () => {
@@ -22,25 +23,29 @@ describe('Home page renders without.', () => {
     );
     expect(Character).toBeInTheDocument();
   });
-  it('should navigate to Morty Smith', async () => {
+  it('should navigate to the princess', async () => {
     render(
       <MemoryRouter initialEntries={['/6']}>
         <App />
       </MemoryRouter>
     );
 
-    //when you open the page you will find a loading state that says "Loading... Hopefully you dont have to look at this for to long...""
     const loading = screen.getByText(
       'Loading... Hopefully you dont have to look at this for to long...'
     );
     expect(loading).toBeInTheDocument();
 
-    // after the page loads you will see a list of people from rick and morty
     const Character = await screen.findByText(
       'Name: Abadango Cluster Princess (Alive)'
     );
     expect(Character).toBeInTheDocument();
 
-    
+    //user clicks onto a character
+    userEvent.click(Character);
+    screen.debug();
+
+    //the page then loads more info about said character
+    const extraInfo = await screen.findByAltText('Abadango Cluster Princess');
+    expect(extraInfo).toBeInTheDocument();
   });
 });
