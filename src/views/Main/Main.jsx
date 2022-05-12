@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Route } from 'react-router-dom';
 import { BrowserRouter } from 'react-router-dom';
-// import { useRouteMatch } from 'react-router-dom/';
 import Filter from '../../components/Filter';
 import InfoCard from '../../components/InfoCard';
 import { fetchCharacters } from '../../services/FetchCharacters';
@@ -10,7 +9,6 @@ export default function Main() {
   const [char, setChar] = useState([]);
   const [filter, setFilter] = useState('Alive');
   const [load, setLoad] = useState(true);
-  //   const { url, path } = useRouteMatch();
 
   useEffect(() => {
     const fetchApi = async () => {
@@ -21,7 +19,7 @@ export default function Main() {
     fetchApi();
   }, [filter]);
 
-  if (load) return <h1>Loading Pickle Ricks</h1>;
+  if (load) return <h1>Loading... Hopefully you dont have to look at this for to long...</h1>;
 
   return (
     <>
